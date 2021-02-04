@@ -4,6 +4,7 @@ import 'package:formz/formz.dart';
 
 import '../../../../data/models/email.dart';
 import '../../../../data/models/password.dart';
+import '../../../../data/repository/authentication/authentication_repository.dart';
 
 part 'login_state.dart';
 
@@ -34,25 +35,13 @@ class LoginCubit extends Cubit<LoginState> {
     if (!state.status.isValidated) return;
     emit(state.copyWith(status: FormzStatus.submissionInProgress));
     try {
-      await _authenticationRepository.logInWithEmailAndPassword(
-        email: state.email.value,
+      await _authenticationRepository.loginWithUsernameAndPassword(
+        username: state.email.value,
         password: state.password.value,
       );
       emit(state.copyWith(status: FormzStatus.submissionSuccess));
     } on Exception {
       emit(state.copyWith(status: FormzStatus.submissionFailure));
-    }
-  }
-
-  Future<void> logInWithGoogle() async {
-    emit(state.copyWith(status: FormzStatus.submissionInProgress));
-    try {
-      await _authenticationRepository.logInWithGoogle();
-      emit(state.copyWith(status: FormzStatus.submissionSuccess));
-    } on Exception {
-      emit(state.copyWith(status: FormzStatus.submissionFailure));
-    } on NoSuchMethodError {
-      emit(state.copyWith(status: FormzStatus.pure));
     }
   }
 }
