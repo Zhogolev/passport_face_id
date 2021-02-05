@@ -8,8 +8,10 @@ class AuthorizationRoute extends UnsignedRoute {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text('authorization'),
+    return Scaffold(
+      body: Center(
+        child: Text('authorization'),
+      ),
     );
   }
 }

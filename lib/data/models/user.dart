@@ -1,9 +1,19 @@
-class User {
-  String username = '';
-  String phone = '';
-  String password = '';
+import 'package:flutter/cupertino.dart';
 
-  User({this.username = '', this.phone = '', this.password = ''});
+class User {
+  final String username;
+  final String phone;
+  final String password;
+  final String id;
+
+  const User(
+      {@required this.username,
+      @required this.phone,
+      @required this.password,
+      @required this.id});
+
+  static const User unknown =
+      User(id: '', phone: '', password: '', username: '');
 
   @override
   bool operator ==(Object other) =>
@@ -13,5 +23,4 @@ class User {
 
   @override
   int get hashCode => super.hashCode;
-
 }

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 import '../../base/base_route.dart';
 
-class HomePage extends SignedRoute {
+class HomeRoute extends SignedRoute {
   static Route route() {
-    return BaseRoute.route(HomePage());
+    return BaseRoute.route(HomeRoute());
   }
 
   @override

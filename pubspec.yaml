@@ -13,6 +13,7 @@ dependencies:
   flutter_bloc: ^6.1.1
   formz: ^0.3.2
   font_awesome_flutter: ^8.11.0
+  rxdart: ^0.25.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
