@@ -15,9 +15,9 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
 
   List<User> users = [
     User(
-        username: 'test123',
+        username: 'test1234',
         phone: '+7 999 999 99 76',
-        password: 'test123',
+        password: 'test1234',
         id: '1')
   ];
 

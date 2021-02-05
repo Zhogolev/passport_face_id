@@ -4,6 +4,7 @@ import 'package:formz/formz.dart';
 
 import '../../../../data/models/email.dart';
 import '../../../../data/models/password.dart';
+import '../../../../data/models/username.dart';
 import '../../../../data/repository/authentication/authentication_repository.dart';
 
 part 'login_state.dart';
@@ -15,11 +16,11 @@ class LoginCubit extends Cubit<LoginState> {
 
   final AuthenticationRepository _authenticationRepository;
 
-  void emailChanged(String value) {
-    final email = Email.dirty(value);
+  void usernameChanged(String value) {
+    final username = Email.dirty(value);
     emit(state.copyWith(
-      email: email,
-      status: Formz.validate([email, state.password]),
+      username: username,
+      status: Formz.validate([username, state.password]),
     ));
   }
 
@@ -27,7 +28,7 @@ class LoginCubit extends Cubit<LoginState> {
     final password = Password.dirty(value);
     emit(state.copyWith(
       password: password,
-      status: Formz.validate([state.email, password]),
+      status: Formz.validate([state.username, password]),
     ));
   }
 
@@ -36,7 +37,7 @@ class LoginCubit extends Cubit<LoginState> {
     emit(state.copyWith(status: FormzStatus.submissionInProgress));
     try {
       await _authenticationRepository.loginWithUsernameAndPassword(
-        username: state.email.value,
+        username: state.username.value,
         password: state.password.value,
       );
       emit(state.copyWith(status: FormzStatus.submissionSuccess));
