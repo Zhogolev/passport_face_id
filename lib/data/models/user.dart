@@ -1,6 +1,7 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 
-class User {
+class User extends Equatable {
   final String username;
   final String phone;
   final String password;
@@ -16,11 +17,5 @@ class User {
       User(id: '', phone: '', password: '', username: '');
 
   @override
-  bool operator ==(Object other) =>
-      other is User &&
-      other.password == other.password &&
-      other.username == other.username;
-
-  @override
-  int get hashCode => super.hashCode;
+  List<Object> get props => [username, password];
 }

@@ -49,8 +49,8 @@ class _UsernameInput extends StatelessWidget {
       builder: (context, state) {
         return TextField(
           key: const Key('loginForm_usernameInput_textField'),
-          onChanged: (email) =>
-              context.read<LoginCubit>().usernameChanged(email),
+          onChanged: (username) =>
+              context.read<LoginCubit>().usernameChanged(username),
           keyboardType: TextInputType.emailAddress,
           decoration: InputDecoration(
             labelText: 'username',
