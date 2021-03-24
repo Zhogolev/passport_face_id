@@ -21,5 +21,8 @@ dev_dependencies:
   freezed: ^0.12.7
   equatable: ^1.2.5
   json_serializable: ^3.5.1
+  graphql_flutter: ^4.0.1
 flutter:
   uses-material-design: true
+dependency_overrides:
+  rxdart: 0.25.0

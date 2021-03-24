@@ -1,0 +1,44 @@
+query ParsePerson($photo: Upload, $passport: Upload) {
+    personValidation: parsePerson(photo: $photo, passport: $passport) {
+        surname{
+            result
+            confidence
+        }
+        name{
+            result
+            confidence
+        }
+        patronymic{
+            result
+            confidence
+        }
+        birthDate{
+            result
+            confidence
+        }
+        gender{
+            result
+            confidence
+        }
+        serial{
+            result
+            confidence
+        }
+        number{
+            result
+            confidence
+        }
+        department{
+            result
+            confidence
+        }
+        dateIssue{
+            result
+            confidence
+        }
+        departmentCode{
+            result
+            confidence
+        }
+    }
+}

@@ -1,0 +1,28 @@
+targets:
+  $default:
+    builders:
+      artemis:
+        options:
+          schema_mapping:
+            - output: lib/gql/generated/uploads.g.dart
+              schema: lib/schema.graphql
+              queries_glob: lib/gql/gql.graphql
+          scalar_mapping:
+            - custom_parser_import: 'package:passport_face_id/gql/converters/uuid_string.dart'
+              graphql_type: UUID
+              dart_type: String
+            - custom_parser_import: 'package:passport_face_id/gql/converters/timestamp_date.dart'
+              graphql_type: Timestamp
+              dart_type: DateTime
+            - custom_parser_import: 'package:passport_face_id/gql/converters/json.dart'
+              graphql_type: JSON
+              dart_type: String
+            - custom_parser_import: 'package:passport_face_id/gql/converters/date_to_date_time.dart'
+              graphql_type: Date
+              dart_type: DateTime
+            - custom_parser_import: 'package:passport_face_id/gql/converters/upload_formdata.dart'
+              graphql_type: Upload
+              dart_type:
+                name: MultipartFile
+                imports:
+                  - 'package:http/http.dart'

@@ -1,0 +1,82 @@
+part of '../user_profile_data.dart';
+
+class _PassportData extends StatelessWidget {
+  final ImagePicker _picker = ImagePicker();
+  final VoidCallback onPressed;
+
+  static Route route() => BaseRoute.route(_PassportData(onPressed: () {
+        ///todo save
+        print('///todo save data');
+      }));
+
+  _PassportData({Key key, @required this.onPressed}) : super(key: key);
+
+  String get title => 'Паспортные данные';
+
+  @override
+  Widget build(BuildContext context) {
+    ThemeData theme = Theme.of(context);
+    return Scaffold(
+      appBar: getProfileAppBar(context, title),
+      body: ListView(
+        padding: bodyPadding,
+        children: [
+          const SizedBox(height: 12),
+          const Text('Введите, пожалуйста данные о себе'),
+          const SizedBox(height: 38),
+          ProjectFormField(
+            padding: EdgeInsets.zero,
+            label: 'Код и серия паспорта',
+          ),
+          ProjectFormField(
+            padding: EdgeInsets.zero,
+            label: 'Дата выдачи паспорта',
+            hint: '12/12/2020',
+          ),
+          ProjectFormField(
+            padding: EdgeInsets.zero,
+            label: 'Кем выдан',
+          ),
+          ProjectFormField(
+            padding: EdgeInsets.zero,
+            label: 'Код подразделения',
+          ),
+          const SizedBox(height: 24),
+          MaterialButton(
+            color: theme.primaryColor,
+            onPressed: () async {
+              final pickedMainPage =
+                  await _picker.getImage(source: ImageSource.camera);
+            },
+            child: Text(
+              'Первая страница паспорта',
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+          MaterialButton(
+            color: theme.primaryColor,
+            onPressed: () async {
+              final pickedFile =
+                  await _picker.getImage(source: ImageSource.camera);
+            },
+            child: Text('Фото паспорта в руках',
+                style: TextStyle(color: Colors.white)),
+          ),
+          SizedBox(
+            height: 24,
+          ),
+          MaterialButton(
+            color: theme.primaryColor,
+            onPressed: onPressed ?? () {},
+            child: Center(
+              child: Text(
+                'Сохранить',
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
